@@ -1,30 +1,49 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <div>
+    <v-header  :key="headerKey"></v-header>
+    <router-view :key="routerKey"/>
+  </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
 
-nav {
-  padding: 30px;
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+<script>
+import VHeader from "@/components/header/Header.vue";
+import {useRoute} from "vue-router";
+import {computed} from "vue";
+import {mapGetters} from "vuex";
 
-    &.router-link-exact-active {
-      color: #42b983;
+export default {
+  name: 'app',
+  components: {
+    VHeader
+  },
+  data: () => {
+    return{}
+  },
+
+  computed: {
+    ...mapGetters(["handbookType"]),
+    headerKey() {
+      return this.handbookType;
+    },
+    routerKey(){
+      return this.$route.fullPath;
     }
+
+  },
+  methods:  {},
+  mounted() {},
+  setup(){
+    const route = useRoute();
+    const currentId = computed(()=>route.params.id);
+    return {
+      currentId,
+    };
   }
 }
+
+</script>
+
+<style lang="scss">
 </style>
