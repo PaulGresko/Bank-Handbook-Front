@@ -4,7 +4,7 @@ import 'nprogress/nprogress.css'
 
 
 
-export const API_URL = 'http://localhost:8080';
+export const API_URL = 'http://localhost:9090';
 const login = 'admin';
 const password = 'admin';
 

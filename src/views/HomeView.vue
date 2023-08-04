@@ -116,7 +116,7 @@
     </div>
     <div class="filter-input">
       <label>Тип участника: </label>
-      <select v-model="bic_params.ptType">
+      <select v-model="bic_params.ptType" @change="showPITableWithResetPage">
         <option v-for="type in ptType" :value="type.value" :key="type.value">
           {{type.label}}
         </option>
@@ -125,7 +125,7 @@
   </div>
   <div class="filter-buttons">
     <button class="home-buttons" @click="resetPartInfo">Сброс</button>
-    <button class="home-buttons" @click="showPITable">Найти</button>
+    <button class="home-buttons" @click="showPITableWithResetPage">Найти</button>
   </div>
     <v-table
         :current-page="bic_params.page + 1"
@@ -362,10 +362,17 @@ export default {
       this.GET_COUNT_ED807(this.params);
       this.selectedItem=null;
     },
+    showPITableWithResetPage(){
+      this.bic_params.page=0;
+      this.GET_ALL_PART_INFO(this.bic_params);
+      this.GET_COUNT_OF_PART_INFO(this.bic_params);
+      this.expandedRows = [];
+    },
     showPITable() {
       this.GET_ALL_PART_INFO(this.bic_params);
       this.GET_COUNT_OF_PART_INFO(this.bic_params);
       this.expandedRows = [];
+
     },
 
     handleFileChange(event) {
