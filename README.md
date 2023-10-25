@@ -1,24 +1,27 @@
-# bank-system-front
+# Cправочник сведений ЦБ РФ
 
-## Project setup
+Это веб-сервис для работы со справочной информацией о кредитно-финансовых учреждениях.
+Приложение позвляет получать, добавлять, удалять и редактировать справочную информацию.
+
+## Используемый стэк:
+HTML, CSS, Bootstrap, JavaScript, VUE.    
+Взаимодействие между backend и frontend осуществляется посредством JSON, REST.       
+
+## Описание API
+Для описания API используются Swagger.
+
+Для просмотра описания api необходимо запустить приложение и перейти по ссылке:
+
+http://localhost:9090/swagger-ui/#/
+
+## Инструкция по запуску
+Установка необходимых модулей:
 ```
 npm install
 ```
-
-### Compiles and hot-reloads for development
+Запуск программы
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
